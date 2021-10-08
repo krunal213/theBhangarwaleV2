@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_home"
+    app:startDestination="@id/navigation_feed">
+
+    <fragment
+        android:id="@+id/navigation_feed"
+        android:name="com.app.thebhangarwale.home.FeedFragment"
+        tools:layout="@layout/fragment_feed"/>
+
+    <fragment
+        android:id="@+id/navigation_create_request"
+        android:name="com.app.thebhangarwale.home.CreateRequestFragment"
+        tools:layout="@layout/fragment_create_request" />
+
+    <fragment
+        android:id="@+id/navigation_what_is_new"
+        android:name="com.app.thebhangarwale.home.WhatIsNewFragment"
+        tools:layout="@layout/fragment_what_is_new" />
+
+    <fragment
+        android:id="@+id/navigation_my_account"
+        android:name="com.app.thebhangarwale.home.MyAccountFragment"
+        tools:layout="@layout/fragment_my_account" />
+
+</navigation>

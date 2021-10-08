@@ -1,0 +1,151 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimaryVariant">@color/white</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="fontFamily">@font/odibee_sans_regular</item>
+    </style>
+
+    <style name="Theme.TheBhangarwale" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimaryVariant">#eef0f2</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="colorPrimary">#01875F</item>
+        <item name="fontFamily">@font/jet_brains_mono_regular</item>
+        <item name="colorSecondary">#F8B624</item>
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
+        <item name="colorControlNormal">#5F6368</item>
+        <item name="android:actionOverflowButtonStyle">@style/OverFlow</item>
+        <item name="android:windowBackground">@color/color_window_background</item>
+    </style>
+
+    <style name="OverFlow" parent="@android:style/Widget.Holo.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_overflow_menu</item>
+        <item name="android:width">40dp</item>
+        <item name="android:padding">7dp</item>
+        <item name="android:minWidth">40dp</item>
+    </style>
+
+    <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="itemIconTint">@color/mtrl_navigation_bar_item_tint_bhangarwale</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="colorPrimary">#FFFFFF</item>
+    </style>
+
+    <style name="OtpViewTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
+        <item name="android:itemBackground">#E0E0E0</item>
+    </style>
+
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">24sp</item>
+        <item name="fontFamily">@font/odibee_sans_regular</item>
+    </style>
+
+    <style name="Toolbar.TitleTextV2" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/jet_brains_mono_regular</item>
+    </style>
+
+    <style name="FloatingActionButton" parent="ThemeOverlay.MaterialComponents.Dark">
+        <item name="colorPrimary">#F8B624</item>
+    </style>
+
+    <style name="Toolbar.TitleTextV3" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">45sp</item>
+        <item name="fontFamily">@font/odibee_sans_regular</item>
+    </style>
+
+    <style name="Theme.TheBhangarwale.Settings" parent="Theme.TheBhangarwale">
+        <item name="colorPrimary">#01875F</item>
+        <item name="colorSecondary">#01875F</item>
+    </style>
+
+    <style name="Theme.TheBhangarwale.GoogleMap" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">#01875F</item>
+        <item name="fontFamily">@font/jet_brains_mono_regular</item>
+    </style>
+
+    <style name="Toolbar.RequestDetail.Title" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Toolbar.RequestDetail.Subtitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="Theme.TheBhangarwale.CancelRequest" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimaryVariant">@android:color/black</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="fontFamily">@font/jet_brains_mono_regular</item>
+        <item name="colorPrimary">#01875F</item>
+        <item name="colorSecondary">#01875F</item>
+        <item name="android:windowBackground">@color/color_window_background</item>
+    </style>
+
+    <style name="BottomSheetDialogFragmentTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="fontFamily">@font/jet_brains_mono_regular</item>
+        <item name="colorPrimary">#01875F</item>
+        <item name="bottomSheetStyle">@style/BottomSheetDialogFragmentStyle</item>
+    </style>
+
+    <style name="BottomSheetDialogFragmentStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@color/color_window_background</item>
+    </style>
+
+    <style name="Theme.TheBhangarwale.Profile" parent="Theme.TheBhangarwale">
+        <item name="colorSecondary">#01875F</item>
+    </style>
+
+    <style name="Theme.TheBhangarwale.Profile2" parent="Widget.AppCompat.AutoCompleteTextView">
+        <item name="colorSecondary">#01875F</item>
+    </style>
+
+    <style name="Theme.TheBhangarwale.GoogleMap.Toolbar" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorControlNormal">#5F6368</item>
+        <item name="android:actionOverflowButtonStyle">@style/OverFlow</item>
+    </style>
+
+    <style name="Theme.TheBhangarwale.ProgressDialogFragment" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimaryDark">#eef0f2</item>
+        <item name="colorPrimary">#01875F</item>
+        <item name="colorAccent">#01875F</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">#CCFFFFFF</item>
+        <item name="fontFamily">@font/jet_brains_mono_regular</item>
+    </style>
+
+    <style name="FullscreenTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item><!--
+        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>-->
+        <item name="fontFamily">@font/jet_brains_mono_regular</item>
+    </style>
+
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">#66000000</item>
+        <item name="fontFamily">@font/jet_brains_mono_regular</item>
+    </style>
+
+    <!--<style name="Theme.AddressPicker" parent="Theme.MaterialComponents.Light.NoActionBar">
+       &lt;!&ndash; <item name="colorPrimaryVariant">#eef0f2</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>&ndash;&gt;
+        <item name="colorPrimary">#01875F</item>
+        <item name="fontFamily">@font/jet_brains_mono_regular</item>
+       &lt;!&ndash; <item name="colorSecondary">#F8B624</item>
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
+        <item name="colorControlNormal">#5F6368</item>
+        <item name="android:actionOverflowButtonStyle">@style/OverFlow</item>&ndash;&gt;
+    </style>-->
+
+
+</resources>

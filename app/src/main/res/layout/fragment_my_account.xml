@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_profile"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="?android:attr/selectableItemBackground">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:tint="#9E9E9E"
+            android:src="@mipmap/ic_profile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textOne"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="Krunal Kathikar"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:textColor="@color/color_my_account_title"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/textTwo"
+            app:layout_constraintLeft_toRightOf="@id/img"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/img"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textTwo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="9890352190"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="@color/color_my_accont_sub_title"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/img"
+            app:layout_constraintLeft_toLeftOf="@id/textOne"
+            app:layout_constraintRight_toRightOf="@id/textOne"
+            app:layout_constraintTop_toBottomOf="@id/textOne" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        app:layout_constraintTop_toBottomOf="@id/item_profile"
+        android:background="@color/color_divider"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

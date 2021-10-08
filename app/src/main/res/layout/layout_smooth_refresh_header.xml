@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/sr_classic_progress"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        app:cpb_background_progressbar_color="#EEEEEE"
+        app:cpb_background_progressbar_width="1.2dp"
+        app:cpb_progressbar_color="#D6D6D6"
+        app:cpb_progressbar_width="1.2dp"
+        app:cpb_round_border="false"
+        app:cpb_indeterminate_mode="true"
+        android:layout_gravity="center"/>
+
+</LinearLayout>

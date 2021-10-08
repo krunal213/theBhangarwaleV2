@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Border -->
+    <item>
+        <shape>
+            <solid android:color="@color/color_for_toolbar_elevation"></solid>
+        </shape>
+    </item>
+    <!-- Body -->
+    <item android:bottom="0.8dp">
+        <shape>
+            <solid android:color="@color/color_background_for_toolbar"></solid>
+        </shape>
+    </item>
+</layer-list>

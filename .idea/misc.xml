@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/bac.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/drawable_elevation.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/drawable_horizonatal_divider.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/drawable_layout_elevation.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/drawable_rounded_corner.xml" value="0.2046875" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/drawable_toolbar_elevation.xml" value="0.16296296296296298" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/drawable_whats_new.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_account.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_add_green.xml" value="0.2169230769230769" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_add_request.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_add_v3.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_add_v3_filled.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_arrow.xml" value="0.2046875" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_baseline_playlist_add_24.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_cancel.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_close.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_continue.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_edit.xml" value="0.16944444444444445" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_feed.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_gallery.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_help.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_help_v2.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_location.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_option.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_overflow_menu.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_phone.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_pin.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_profile_v2_filled.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_search.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_settings.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_share.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_shipping_address.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_take_photo.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_total.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_video.xml" value="0.2169230769230769" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_voice.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_volume_off.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/ic_volume_up.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/selector_feed.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/selector_notification.xml" value="0.1" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/selector_request.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/selector_volume.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/selector_volumen.xml" value="0.1" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/drawable/toolbar_elevation.xml" value="0.2203125" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/font-hi/font_the_bhangarwale.xml" value="0.234375" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_account.xml" value="0.19202898550724637" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_add_address.xml" value="0.1" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_add_item.xml" value="0.21" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_address.xml" value="0.19202898550724637" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_bhangarwale.xml" value="0.12092391304347826" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_choose_address.xml" value="0.14990942028985507" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_confirmation.xml" value="0.25" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_create_address.xml" value="0.2006340579710145" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_image_detail_screen.xml" value="0.1403985507246377" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_otp.xml" value="0.22" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_otp_update.xml" value="0.12894736842105264" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_phone_number.xml" value="0.25" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_phone_number_update.xml" value="0.20416666666666666" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_profile.xml" value="0.20416666666666666" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_request.xml" value="0.1" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_request_cancel.xml" value="0.25" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_request_detail.xml" value="0.25" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_search_request_inside_cart.xml" value="0.18840579710144928" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_settings.xml" value="0.19202898550724637" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_splash.xml" value="0.15" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_support.xml" value="0.13903985507246377" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_support_settings.xml" value="0.13903985507246377" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_update_item.xml" value="0.20416666666666666" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/activity_video_detail_screen.xml" value="0.16145833333333334" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/adapter_account.xml" value="0.19202898550724637" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/adapter_add_item.xml" value="0.20416666666666666" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/adapter_address.xml" value="0.19202898550724637" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/adapter_choose_address.xml" value="0.14990942028985507" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/adapter_create_request.xml" value="0.1" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/adapter_help.xml" value="0.19202898550724637" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/adapter_info.xml" value="0.20416666666666666" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/adapter_item_v2.xml" value="0.20416666666666666" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/adapter_item_v3.xml" value="0.16621376811594202" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/adapter_multiple_image_feed.xml" value="0.1793478260869565" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/adapter_my_account.xml" value="0.1766304347826087" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/adapter_pager_feed.xml" value="0.1793478260869565" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/adapter_profile_type_one.xml" value="0.20416666666666666" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/adapter_profile_type_two.xml" value="0.20416666666666666" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/adapter_request.xml" value="0.25" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/adapter_request_records.xml" value="0.19202898550724637" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/adapter_single_image_feed.xml" value="0.25" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/adapter_support.xml" value="0.13903985507246377" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/adapter_video_feed.xml" value="0.18" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/adapter_whats_new.xml" value="0.20018115942028986" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/bottom_sheet_fragment_location_denied.xml" value="0.17481884057971014" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/contebt_request_records.xml" value="0.14990942028985507" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/content_request_records.xml" value="0.20416666666666666" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/content_selected_address.xml" value="0.20416666666666666" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/content_total.xml" value="0.20416666666666666" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/dialog_profile_edit_phone_number.xml" value="0.20416666666666666" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/fragment_address_picker.xml" value="0.18795289855072464" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/fragment_create_request.xml" value="0.25" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/fragment_dialog_progress_bar.xml" value="0.14719202898550723" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/fragment_feed.xml" value="0.1" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/fragment_my_account.xml" value="0.16259057971014493" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/fragment_what_is_new.xml" value="0.17572463768115942" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/layout_search_with_close_and_cancel_button.xml" value="0.13360507246376813" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/layout_smooth_refresh_header.xml" value="0.1431159420289855" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/layout/toolbar_feed.xml" value="0.25" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/menu/menu_add_address.xml" value="0.20416666666666666" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/menu/menu_add_item.xml" value="0.20416666666666666" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/menu/menu_address.xml" value="0.20416666666666666" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/menu/menu_after_location_permission_denied.xml" value="0.20416666666666666" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/menu/menu_bottom_nav_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/menu/menu_create_address.xml" value="0.20416666666666666" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/menu/menu_feed.xml" value="0.20416666666666666" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/menu/menu_request_cancel.xml" value="0.20416666666666666" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/menu/menu_search_request_inside_cart.xml" value="0.20416666666666666" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/menu/options_menu_add_item.xml" value="0.20416666666666666" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/menu/options_menu_address.xml" value="0.20416666666666666" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/xml/fragment_settings.xml" value="0.25" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/xml/fragment_support_settings.xml" value="0.13903985507246377" />
+        <entry key="..\:/theBhangarwale/app/src/main/res/xml/shortcuts.xml" value="0.18568840579710144" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

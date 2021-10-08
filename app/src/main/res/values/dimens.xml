@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <dimen name="design_bottom_navigation_elevation" tools:override="true">2dp</dimen>
+    <dimen name="design_bottom_navigation_icon_size" tools:override="true">26dp</dimen>
+    <dimen name="padding_sixteen_dp">16dp</dimen>
+    <dimen name="margin_eighteen_dp">18dp</dimen>
+    <dimen name="margin_eight_dp">8dp</dimen>
+    <dimen name="padding_tweleve_dp">12dp</dimen>
+    <dimen name="elevation_sixteen_dp">16dp</dimen>
+    <dimen name="margin_sixteen_dp">16dp</dimen>
+    <dimen name="drop_down_height">500dp</dimen>
+    <dimen name="margin_for_map_marker">94dp</dimen>
+    <dimen name="map_icon_size">36dp</dimen>
+
+</resources>

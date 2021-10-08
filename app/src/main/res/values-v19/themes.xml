@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.TheBhangarwale.GoogleMap" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="colorPrimary">#01875F</item>
+        <item name="fontFamily">@font/jet_brains_mono_regular</item>
+    </style>
+</resources>

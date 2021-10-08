@@ -1,0 +1,60 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="SplashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimaryVariant">#191919</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:windowBackground">#191919</item>
+        <item name="fontFamily">@font/odibee_sans_regular</item>
+    </style>
+
+    <style name="Theme.TheBhangarwale" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimaryVariant">#252628</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="colorPrimary">#01875F</item>
+        <item name="fontFamily">@font/jet_brains_mono_regular</item>
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
+        <item name="android:windowBackground">@color/color_window_background</item>
+        <item name="colorSecondary">#F8B624</item>
+        <item name="colorControlNormal">#969798</item>
+        <item name="android:actionOverflowButtonStyle">@style/OverFlow</item>
+    </style>
+
+    <style name="OverFlow" parent="@android:style/Widget.Holo.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_overflow_menu</item>
+        <item name="android:width">40dp</item>
+        <item name="android:padding">7dp</item>
+        <item name="android:minWidth">40dp</item>
+    </style>
+
+    <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+        <item name="itemIconTint">@color/mtrl_navigation_bar_item_tint_bhangarwale</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="colorPrimary">#0F0F0F</item>
+    </style>
+
+    <style name="Theme.TheBhangarwale.CancelRequest" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimaryVariant">@android:color/black</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="fontFamily">@font/jet_brains_mono_regular</item>
+        <item name="colorPrimary">#01875F</item>
+        <item name="colorSecondary">#01875F</item>
+        <item name="android:windowBackground">@color/color_window_background</item>
+    </style>
+
+    <style name="BottomSheetDialogFragmentTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="fontFamily">@font/jet_brains_mono_regular</item>
+        <item name="colorPrimary">#01875F</item>
+        <item name="bottomSheetStyle">@style/BottomSheetDialogFragmentStyle</item>
+    </style>
+
+    <style name="BottomSheetDialogFragmentStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@color/color_window_background</item>
+        <item name="android:colorBackground">@color/color_window_background</item>
+    </style>
+
+</resources>

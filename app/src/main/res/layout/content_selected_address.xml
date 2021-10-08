@@ -1,0 +1,41 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:background="@drawable/drawable_layout_elevation">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="16dp"
+        android:padding="7dp"
+        android:src="@drawable/ic_shipping_address"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewAddress"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/jet_brains_mono_regular"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="5dp"
+        android:maxLines="2"
+        android:textAppearance="?attr/textAppearanceBody1"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toRightOf="@id/image"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="4D, Harish Arjun Palay Marg, New Patra Chawl, Dhaku Prabhuchi Wadi, Byculla East, Byculla, Mumbai, Maharashtra 400033, India"
+        />
+
+    <!--android:fontFamily="@font/jet_brains_mono_regular"-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

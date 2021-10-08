@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="account" type="id"/>
+    <item name="settings" type="id"/>
+    <item name="help" type="id"/>
+    <item name="address" type="id" />
+    <item name="requests" type="id" />
+    <item name="contact_us" type="id"/>
+    <item name="email_us" type="id"/>
+    <item name="customer_name" type="id" />
+    <item name="customer_phone" type="id" />
+    <item name="support_settings" type="id"/>
+</resources>

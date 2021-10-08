@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_take_photo_or_video_from_gallery"
+        android:icon="@drawable/ic_gallery"
+        android:title="@string/title_gallery"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_take_photo_from_camera"
+        android:icon="@drawable/ic_take_photo"
+        android:title="@string/title_camera"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_take_video_from_camera"
+        android:icon="@drawable/ic_video"
+        android:title=""
+        app:showAsAction="always" />
+
+</menu>

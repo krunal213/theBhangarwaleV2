@@ -1,0 +1,13 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="add_item"
+        android:enabled="true"
+        android:icon="@drawable/ic_add_item_green"
+        android:shortcutShortLabel="@string/title_add_item"
+        android:shortcutLongLabel="@string/title_add_item">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.app.thebhangarwale"
+            android:targetClass="com.app.thebhangarwale.AddItemActivity" />
+    </shortcut>
+</shortcuts>
