@@ -4,19 +4,19 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.akexorcist.localizationactivity.ui.LocalizationActivity
-import com.app.thebhangarwale.custom.activity.BhangarwaleConfigAndControllerActivity
 import com.app.thebhangarwale.HomeActivity
 import com.app.thebhangarwale.Login
 import com.app.thebhangarwale.R
 import com.app.thebhangarwale.SupportActivity
+import com.app.thebhangarwale.custom.adapter.OtpListenerAdapter
 import com.app.thebhangarwale.dagger.component.DaggerBhangarwaleAppComponent
 import com.app.thebhangarwale.dagger.module.BhangarwaleApplicationModule
 import com.app.thebhangarwale.databinding.ActivityOtpBinding
-import com.app.thebhangarwale.login.viewmodel.LoginViewModel
-import com.mukesh.OnOtpCompletionListener
+import com.app.thebhangarwale.LoginViewModel
+import com.app.thebhangarwale.custom.entity.BhangarwaleResult
 import javax.inject.Inject
 
-class OtpActivity : LocalizationActivity(), OnOtpCompletionListener,
+class OtpActivity : LocalizationActivity(),
     View.OnClickListener {
 
     @Inject
@@ -33,7 +33,26 @@ class OtpActivity : LocalizationActivity(), OnOtpCompletionListener,
             .injectOtpActivity(this)
         super.onCreate(savedInstanceState)
         setContentView(activityOtpBinding.root)
-        activityOtpBinding.otpView.setOtpCompletionListener(this)
+        activityOtpBinding.otpView.otpListener = object : OtpListenerAdapter() {
+            override fun onOTPComplete(otp: String) {
+                loginViewModel
+                    .validatedOTP(otp?.trim())
+                    .observe(this@OtpActivity,{
+                        when (it) {
+                            is BhangarwaleResult.Success -> {
+                                startActivity(Intent(this@OtpActivity, HomeActivity::class.java).apply {
+                                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                                })
+                            }
+                            is BhangarwaleResult.Error -> {
+                                activityOtpBinding.otpView.showError()
+                            }
+                        }
+                    })
+
+            }
+        }
         /*findViewById<TextView>(R.id.label_two).append(
             PhoneNumberUtils.formatNumber(
                 "+918806616913",
@@ -43,15 +62,6 @@ class OtpActivity : LocalizationActivity(), OnOtpCompletionListener,
         activityOtpBinding.imageviewSupport.setOnClickListener(this)
     }
 
-    override fun onOtpCompleted(otp: String?) {
-        loginViewModel.validatedOTP(otp?.trim())
-        Login.IsLogin = true
-        startActivity(Intent(this, HomeActivity::class.java).apply {
-            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        })
-    }
-
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.imageviewSupport->{
@@ -59,5 +69,8 @@ class OtpActivity : LocalizationActivity(), OnOtpCompletionListener,
             }
         }
     }
+
+
+
 
 }

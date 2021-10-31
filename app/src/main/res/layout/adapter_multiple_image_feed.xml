@@ -4,4 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/imageView"
-    android:src="@drawable/sankrant"/>
+    android:src="@drawable/sankrant">
+
+
+</androidx.appcompat.widget.AppCompatImageView>

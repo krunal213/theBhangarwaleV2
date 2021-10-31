@@ -12,5 +12,6 @@
     <dimen name="drop_down_height">500dp</dimen>
     <dimen name="margin_for_map_marker">94dp</dimen>
     <dimen name="map_icon_size">36dp</dimen>
+    <dimen name="margin_twenty_dp">20dp</dimen>
 
 </resources>

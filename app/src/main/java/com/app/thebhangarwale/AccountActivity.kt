@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.app.thebhangarwale.address.view.AddressActivity
 import com.app.thebhangarwale.custom.activity.BhangarwaleConfigAndControllerActivity
 import com.google.android.material.appbar.MaterialToolbar
 
@@ -38,7 +39,7 @@ class AccountActivity : BhangarwaleConfigAndControllerActivity(), View.OnClickLi
                 val id = view.getTag(R.string.tag_id)
                 when(id){
                     R.id.address->{
-                        startActivity(Intent(this,AddressActivity::class.java))
+                        startActivity(Intent(this, AddressActivity::class.java))
                     }
                     R.id.requests->{
                         startActivity(Intent(this,RequestActivity::class.java))

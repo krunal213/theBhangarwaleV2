@@ -5,4 +5,5 @@
         <item name="colorPrimary">#01875F</item>
         <item name="fontFamily">@font/jet_brains_mono_regular</item>
     </style>
+
 </resources>

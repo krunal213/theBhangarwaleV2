@@ -43,4 +43,5 @@
     <color name="color_window_background">#1B1B1B</color>
     <color name="color_cancel_title">#F7F7F7</color>
     <color name="color_cancel_sub_title">#929292</color>
+    <color name="color_otp_box_background">#323232</color>
 </resources>

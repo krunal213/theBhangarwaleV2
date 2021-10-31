@@ -8,6 +8,6 @@
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="com.app.thebhangarwale"
-            android:targetClass="com.app.thebhangarwale.AddItemActivity" />
+            android:targetClass="com.app.thebhangarwale.add_item.view.AddItemActivity" />
     </shortcut>
 </shortcuts>

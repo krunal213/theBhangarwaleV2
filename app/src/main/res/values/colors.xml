@@ -48,4 +48,7 @@
     <color name="color_feed_checkbox">#212121</color>
     <color name="color_window_background_google_map_bottom_sheet">#333333</color>
     <color name="color_background_for_hint_view">#3260CF</color>
+    <color name="color_otp_box_background">#E0E0E0</color>
+    <color name="color_ripple">#E0E0E0</color>
+    <color name="color_activated">#F7F8FA</color>
 </resources>

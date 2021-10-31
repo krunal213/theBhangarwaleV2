@@ -16,7 +16,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/sankrant"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_view" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar_view">
+
+        <tag android:id="@+id/zoomable" android:value="ZoomableViewTag" />
+
+    </androidx.appcompat.widget.AppCompatImageView>
 
     <com.codesgood.views.JustifiedTextView
         android:layout_width="match_parent"

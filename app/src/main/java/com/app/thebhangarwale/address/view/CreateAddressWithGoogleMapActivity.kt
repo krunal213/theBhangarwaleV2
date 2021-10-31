@@ -1,4 +1,4 @@
-package com.app.thebhangarwale
+package com.app.thebhangarwale.address.view
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -13,9 +13,11 @@ import android.view.animation.BounceInterpolator
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.content.res.ResourcesCompat
+import com.app.thebhangarwale.R
 import com.app.thebhangarwale.RequestCode.REQUEST_MY_LOCATION
 import com.app.thebhangarwale.custom.activity.BhangarwaleConfigAndControllerActivity
 import com.app.thebhangarwale.custom.adapter.MotionLayoutTransitionAdapter
+import com.app.thebhangarwale.setVisibilityForMotionLayout
 import com.getkeepsafe.taptargetview.TapTarget
 import com.getkeepsafe.taptargetview.TapTargetView
 import com.google.android.gms.common.api.ResolvableApiException
@@ -32,9 +34,8 @@ import com.rodolfonavalon.shaperipplelibrary.ShapeRipple
 import com.rodolfonavalon.shaperipplelibrary.model.Circle
 import permissions.dispatcher.*
 
-
 @RuntimePermissions
-class AddAddressActivity : BhangarwaleConfigAndControllerActivity() {
+class CreateAddressWithGoogleMapActivity : BhangarwaleConfigAndControllerActivity() {
 
     private val locationRequest: LocationRequest by lazy {
         LocationRequest.create()
@@ -45,7 +46,7 @@ class AddAddressActivity : BhangarwaleConfigAndControllerActivity() {
         window.decorView.systemUiVisibility =
             (View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE)
 
-        setContentView(R.layout.activity_add_address)
+        setContentView(R.layout.activity_create_address_with_google_map)
 
         findViewById<ShapeRipple>(R.id.ripple).apply {
             rippleDuration = 5757
@@ -80,7 +81,7 @@ class AddAddressActivity : BhangarwaleConfigAndControllerActivity() {
                 .outerCircleAlpha(0.96f)
                 .descriptionTextSize(14)
                 .textColor(android.R.color.white)
-                .textTypeface(ResourcesCompat.getFont(this,R.font.jet_brains_mono_regular))
+                .textTypeface(ResourcesCompat.getFont(this, R.font.jet_brains_mono_regular))
                 .drawShadow(true)
                 .cancelable(true)
                 .transparentTarget(true)
@@ -102,11 +103,11 @@ class AddAddressActivity : BhangarwaleConfigAndControllerActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.action_create_address->{
-                startActivity(Intent(this,CreateAddressActivity::class.java))
+            R.id.action_create_address ->{
+                startActivity(Intent(this, CreateAddressActivity::class.java))
                 finish()
             }
-            R.id.action_system_settings->{
+            R.id.action_system_settings ->{
                 startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
                     data = Uri.fromParts("package", packageName, null)
                 })
@@ -129,7 +130,7 @@ class AddAddressActivity : BhangarwaleConfigAndControllerActivity() {
                 .build()
                 .apply {
                     LocationServices
-                        .getSettingsClient(this@AddAddressActivity)
+                        .getSettingsClient(this@CreateAddressWithGoogleMapActivity)
                         .checkLocationSettings(this)
                         .addOnSuccessListener {
                             setLocationOnMap()
@@ -138,7 +139,7 @@ class AddAddressActivity : BhangarwaleConfigAndControllerActivity() {
                             if (it is ResolvableApiException) {
                                 try {
                                     it.startResolutionForResult(
-                                        this@AddAddressActivity,
+                                        this@CreateAddressWithGoogleMapActivity,
                                         REQUEST_MY_LOCATION
                                     )
                                 } catch (sendEx: IntentSender.SendIntentException) {
@@ -177,7 +178,7 @@ class AddAddressActivity : BhangarwaleConfigAndControllerActivity() {
     @SuppressLint("MissingPermission")
     private fun setLocationOnMap() {
         LocationServices
-            .getFusedLocationProviderClient(this@AddAddressActivity)
+            .getFusedLocationProviderClient(this@CreateAddressWithGoogleMapActivity)
             .also { fusedLocationProviderClient ->
                 fusedLocationProviderClient.requestLocationUpdates(
                     locationRequest,
@@ -192,11 +193,13 @@ class AddAddressActivity : BhangarwaleConfigAndControllerActivity() {
                                                 uiSettings?.isMyLocationButtonEnabled = false
                                                 uiSettings?.isCompassEnabled = false
                                             }
-                                            mMap?.setMapStyle(MapStyleOptions.loadRawResourceStyle(this@AddAddressActivity, R.raw.style_json))
+                                            mMap?.setMapStyle(MapStyleOptions.loadRawResourceStyle(this@CreateAddressWithGoogleMapActivity,
+                                                R.raw.style_json
+                                            ))
                                             val cameraPosition: CameraPosition =
                                                 CameraPosition.builder()
                                                     .target(LatLng(latitude, longitude))
-                                                    .zoom(16f)
+                                                    .zoom(17f)
                                                     .build()
                                             mMap?.animateCamera(
                                                 CameraUpdateFactory.newCameraPosition(

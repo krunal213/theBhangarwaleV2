@@ -1,5 +1,6 @@
 package com.app.thebhangarwale
 
+import android.animation.Animator
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
@@ -12,16 +13,21 @@ import java.util.*
 import android.content.pm.ApplicationInfo
 import android.content.Intent
 import androidx.fragment.app.Fragment
+import kotlin.math.hypot
+import kotlin.math.max
+import android.animation.AnimatorListenerAdapter
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.content.ContextCompat.getSystemService
 
 
-fun Context.setLang(language: String) {
-    resources.apply {
-        configuration.apply {
-            setLocale(Locale(language))
-            updateConfiguration(this, displayMetrics)
-        }
-    }
-}
+
+
+
+
+
 
 fun View.circularReval() {
     addOnLayoutChangeListener(object : View.OnLayoutChangeListener {
@@ -64,17 +70,18 @@ fun View.setVisibilityForMotionLayout(visibility: Int) {
 }
 
 fun Activity.openKeyboard() {
-    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
+    window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
 }
 
 fun Activity.hideKeyboard() {
-    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
+    window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
 }
 
-fun Activity.startFacebookActivity(facebookUrl : String){
+fun Activity.startFacebookActivity(facebookUrl: String) {
     var uri: Uri = Uri.parse(facebookUrl)
     try {
-        val applicationInfo: ApplicationInfo = packageManager.getApplicationInfo("com.facebook.katana", 0)
+        val applicationInfo: ApplicationInfo =
+            packageManager.getApplicationInfo("com.facebook.katana", 0)
         if (applicationInfo.enabled) {
             uri = Uri.parse("fb://facewebmodal/f?href=$facebookUrl")
         }
@@ -83,10 +90,11 @@ fun Activity.startFacebookActivity(facebookUrl : String){
     startActivity(Intent(Intent.ACTION_VIEW, uri))
 }
 
-fun Fragment.startFacebookActivity(facebookUrl : String){
+fun Fragment.startFacebookActivity(facebookUrl: String) {
     var uri: Uri = Uri.parse(facebookUrl)
     try {
-        val applicationInfo: ApplicationInfo? = activity?.packageManager?.getApplicationInfo("com.facebook.katana", 0)
+        val applicationInfo: ApplicationInfo? =
+            activity?.packageManager?.getApplicationInfo("com.facebook.katana", 0)
         if (applicationInfo?.enabled == true) {
             uri = Uri.parse("fb://facewebmodal/f?href=$facebookUrl")
         }
@@ -95,3 +103,36 @@ fun Fragment.startFacebookActivity(facebookUrl : String){
     startActivity(Intent(Intent.ACTION_VIEW, uri))
 }
 
+fun View.circularRevalV2() {
+    if (visibility == View.INVISIBLE) {
+        val cx: Int = width / 2
+        val cy: Int = height / 2
+        val finalRadius: Double = hypot(cx.toDouble(), cy.toDouble())
+        val anim = ViewAnimationUtils.createCircularReveal(this, cx, cy, 0f, finalRadius.toFloat())
+        visibility = View.VISIBLE
+        anim.start()
+    }
+}
+
+fun View.hideReval() {
+    if (visibility == View.VISIBLE) {
+        val cx: Int = getWidth() / 2
+        val cy: Int = getHeight() / 2
+        val initialRadius = hypot(cx.toDouble(), cy.toDouble()).toFloat()
+        val anim = ViewAnimationUtils.createCircularReveal(this, cx, cy, initialRadius, 0f)
+        anim.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator) {
+                super.onAnimationEnd(animation)
+                visibility = View.INVISIBLE
+            }
+        })
+        anim.start()
+    }
+}
+
+fun EditText.openKeyBoardWithFocus(){
+    requestFocus()
+    with(context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?){
+        this?.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
+    }
+}

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import com.app.thebhangarwale.address.view.CreateAddressActivity
 import com.google.android.material.appbar.MaterialToolbar
 
 class AddressPickerFragment : Fragment(), Toolbar.OnMenuItemClickListener {
@@ -30,7 +31,7 @@ class AddressPickerFragment : Fragment(), Toolbar.OnMenuItemClickListener {
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         when(item?.itemId){
             R.id.action_create_address->{
-                startActivity(Intent(activity,CreateAddressActivity::class.java))
+                startActivity(Intent(activity, CreateAddressActivity::class.java))
             }
         }
         return true

@@ -74,6 +74,7 @@
     <string name="title_systen_settings">सिस्टम सेटिंगस</string>
     <string name="error_enter_valid_phone_number">कृपया वैध फोन नंबर टाका.</string>
     <string name="string_tap_and_hold_info">अधिक पर्यायांसाठी आइटम टैप करुन होल्ड करा</string>
+    <string name="string_recent_search">Recent Search</string>
 
 
 </resources>

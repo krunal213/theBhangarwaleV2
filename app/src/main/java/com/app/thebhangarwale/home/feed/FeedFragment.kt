@@ -1,14 +1,17 @@
-package com.app.thebhangarwale.home
+package com.app.thebhangarwale.home.feed
 
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.Html
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -16,8 +19,6 @@ import androidx.lifecycle.OnLifecycleEvent
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.app.thebhangarwale.DividerItemDecoration
-import com.app.thebhangarwale.R
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player.REPEAT_MODE_ONE
 import com.google.android.exoplayer2.SimpleExoPlayer
@@ -27,18 +28,25 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.hrskrs.instadotlib.InstaDotView
 import androidx.core.view.ViewCompat
 import androidx.core.content.ContextCompat
+import androidx.core.text.HtmlCompat
+import com.app.thebhangarwale.*
 import com.app.thebhangarwale.custom.adapter.BhangarwaleOnAttachStateChangeAdapter
 import com.app.thebhangarwale.custom.view.BhangarwaleSmoothRefreshLayout
 import com.app.thebhangarwale.custom.view.BhangarwaleSmoothRefreshLayoutHeader
-import com.app.thebhangarwale.getHeightForFeed
-import com.app.thebhangarwale.startFacebookActivity
+import com.app.thebhangarwale.dagger.component.DaggerBhangarwaleAppComponent
+import com.app.thebhangarwale.dagger.module.BhangarwaleApplicationModule
+import com.app.thebhangarwale.home.feed.viewmodel.FeedViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.ShapeAppearanceModel
 import me.dkzwm.widget.srl.indicator.IIndicator
+import javax.inject.Inject
 
-class FeedFragment : Fragment(),View.OnClickListener {
+class FeedFragment : Fragment(), View.OnClickListener, Toolbar.OnMenuItemClickListener {
+
+    @Inject
+    lateinit var feedViewModel: FeedViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,10 +56,22 @@ class FeedFragment : Fragment(),View.OnClickListener {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        DaggerBhangarwaleAppComponent
+            .builder()
+            .bhangarwaleApplicationModule(activity?.application?.let {
+                BhangarwaleApplicationModule(
+                    it
+                )
+            })
+            .build()
+            .injectFeedFragment(this)
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<MaterialToolbar>(R.id.toolbar).inflateMenu(R.menu.menu_feed)
+        view.findViewById<MaterialToolbar>(R.id.toolbar).apply {
+            inflateMenu(R.menu.menu_feed)
+            setOnMenuItemClickListener(this@FeedFragment)
+        }
         view.findViewById<RecyclerView>(R.id.recyclerView).apply {
-            adapter = FeedAdapter(this@FeedFragment.viewLifecycleOwner,this@FeedFragment)
+            adapter = FeedAdapter(this@FeedFragment.viewLifecycleOwner, this@FeedFragment)
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             addItemDecoration(DividerItemDecoration(requireContext()))
@@ -65,21 +85,56 @@ class FeedFragment : Fragment(),View.OnClickListener {
         context?.let {
             MaterialAlertDialogBuilder(it)
                 .setItems(items) { dialog, which ->
-                    /*startActivity(Intent().apply {
+                    startActivity(Intent().apply {
                         action = Intent.ACTION_SEND
-                        putExtra(Intent.EXTRA_TEXT, "This is my text to send.")
+                        putExtra(
+                            Intent.EXTRA_TEXT,
+                            "https://www.facebook.com/113157777199737/posts/306275154554664/"
+                        )
                         type = "text/plain"
-                    })*/
+                    })
 
 
-                    startFacebookActivity("https://www.facebook.com/113157777199737/posts/306275154554664/")
-                    /*startActivity(Intent.createChooser(Intent().apply {
+                    /*val share = Intent.createChooser(Intent().apply {
                         action = Intent.ACTION_SEND
-                        data = Uri.parse("https://www.facebook.com/TheBhangarwale/posts")
-                    }, null))*/
+                        putExtra(Intent.EXTRA_TEXT, "https://www.facebook.com/113157777199737/posts/306275154554664/")
+
+                        // (Optional) Here we're setting the title of the content
+                        putExtra(Intent.EXTRA_TITLE, "Introducing content previews")
+
+                        // (Optional) Here we're passing a content URI to an image to be displayed
+                        data = Uri.parse("https://www.facebook.com/113157777199737/posts/306275154554664/")
+                        flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+                    }, null)
+                    startActivity(share)*/
+
+
+                    //startFacebookActivity("https://www.facebook.com/113157777199737/posts/306275154554664/")
+                    /* startActivity(Intent.createChooser(Intent().apply {
+                         action = Intent.ACTION_SEND
+                         data = Uri.parse("https://www.facebook.com/TheBhangarwale/posts")
+                     }, null))*/
                 }
                 .show()
         }
+    }
+
+    override fun onMenuItemClick(item: MenuItem?): Boolean {
+        when(item?.itemId){
+            R.id.navigation_share->{
+                //https://play.google.com/store/apps/details?id=com.thekabadiwala.userapp
+                startActivity(Intent().apply {
+                    action = Intent.ACTION_SEND
+                    putExtra(
+                        Intent.EXTRA_TEXT,
+                        feedViewModel.shareOurAppUrl
+                    )
+                    type = "text/html"
+                })
+                return true
+            }
+        }
+        return false
     }
 
 }
@@ -91,7 +146,7 @@ class VideoViewHolder(itemView: View, val lifeCycleOwner: LifecycleOwner) :
 
 class PagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-class FeedAdapter(val lifeCycleOwner: LifecycleOwner,val onClickListener: View.OnClickListener) :
+class FeedAdapter(val lifeCycleOwner: LifecycleOwner, val onClickListener: View.OnClickListener) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -133,7 +188,8 @@ class FeedAdapter(val lifeCycleOwner: LifecycleOwner,val onClickListener: View.O
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is VideoViewHolder -> {
-                holder.itemView.findViewById<AppCompatImageView>(R.id.menu).setOnClickListener(onClickListener)
+                holder.itemView.findViewById<AppCompatImageView>(R.id.menu)
+                    .setOnClickListener(onClickListener)
                 if (holder.itemView.findViewById<PlayerView>(R.id.video_player).player == null) {
                     holder.itemView.findViewById<AppCompatCheckBox>(R.id.imageViewVolume).apply {
                         val shapeAppearanceModel = ShapeAppearanceModel()
@@ -151,7 +207,8 @@ class FeedAdapter(val lifeCycleOwner: LifecycleOwner,val onClickListener: View.O
                     SimpleExoPlayer.Builder(holder.itemView.context)
                         .build()
                         .apply {
-                            holder.itemView.findViewById<PlayerView>(R.id.video_player).player = this
+                            holder.itemView.findViewById<PlayerView>(R.id.video_player).player =
+                                this
                             holder.itemView.findViewById<PlayerView>(R.id.video_player)
                                 .apply {
                                     layoutParams.height = context.getHeightForFeed(576, 720)
@@ -196,7 +253,8 @@ class FeedAdapter(val lifeCycleOwner: LifecycleOwner,val onClickListener: View.O
 
             }
             is PagerViewHolder -> {
-                holder.itemView.findViewById<AppCompatImageView>(R.id.menu).setOnClickListener(onClickListener)
+                holder.itemView.findViewById<AppCompatImageView>(R.id.menu)
+                    .setOnClickListener(onClickListener)
                 if (holder.itemView.findViewById<ViewPager2>(R.id.viewpager).adapter == null) {
                     holder.itemView.findViewById<ViewPager2>(R.id.viewpager).apply {
                         layoutParams.height = context.getHeightForFeed(720, 604)
@@ -218,7 +276,8 @@ class FeedAdapter(val lifeCycleOwner: LifecycleOwner,val onClickListener: View.O
                 }
             }
             is SingleImageViewHolder -> {
-                holder.itemView.findViewById<AppCompatImageView>(R.id.menu).setOnClickListener(onClickListener)
+                holder.itemView.findViewById<AppCompatImageView>(R.id.menu)
+                    .setOnClickListener(onClickListener)
                 holder.itemView.findViewById<AppCompatImageView>(R.id.imageview).apply {
                     layoutParams.height = context.getHeightForFeed(720, 604)
                 }

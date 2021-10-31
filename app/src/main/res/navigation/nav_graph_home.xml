@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/navigation_feed"
-        android:name="com.app.thebhangarwale.home.FeedFragment"
+        android:name="com.app.thebhangarwale.home.feed.FeedFragment"
         tools:layout="@layout/fragment_feed"/>
 
     <fragment
         android:id="@+id/navigation_create_request"
-        android:name="com.app.thebhangarwale.home.CreateRequestFragment"
+        android:name="com.app.thebhangarwale.home.create_request.CreateRequestFragment"
         tools:layout="@layout/fragment_create_request" />
 
     <fragment

@@ -45,24 +45,28 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/label_one" />
 
-    <com.mukesh.OtpView
+
+    <in.aabhasjindal.otptextview.OtpTextView
         android:id="@+id/otp_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="40dp"
         android:layout_marginRight="40dp"
-        android:inputType="number"
-        android:textAppearance="?attr/textAppearanceBody1"
-        android:textColor="@color/color_bhangarwale"
-        app:itemCount="6"
-        app:itemSpacing="16dp"
-        app:itemWidth="24dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/label_two"
-        app:viewType="line"
-        android:theme="@style/OtpViewTheme"/>
+        android:textColor="@color/color_bhangarwale"
+        app:height="48dp"
+        app:width="24dp"
+        app:bar_enabled="true"
+        app:bar_height="2dp"
+        app:length="6"
+        app:box_margin_right="8dp"
+        app:otp_text_size="18sp"
+        app:bar_active_color="#01875F"
+        app:bar_inactive_color="#757575"
+        app:otp_box_background="@color/color_otp_box_background"/>
 
     <TextView
         android:id="@+id/label_three"

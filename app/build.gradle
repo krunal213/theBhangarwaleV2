@@ -57,7 +57,7 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
-    implementation 'com.github.mukeshsolanki:android-otpview-pinview:2.1.0'
+    implementation 'com.github.aabhasr1:OtpView:v1.1.2-ktx'
     implementation 'com.codesgood:justifiedtextview:1.1.0'
 
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
@@ -109,7 +109,9 @@ dependencies {
 
     //https://github.com/chrisbanes/PhotoView
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+    implementation 'androidx.recyclerview:recyclerview-selection:1.1.0'
 
+    implementation 'com.aghajari.zoomhelper:ZoomHelper:1.0.1'
 
 }
 

@@ -37,8 +37,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:src="@mipmap/ic_profile_v2"
-            android:tint="#9E9E9E"/>
+            android:src="@drawable/ic_ashish"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"

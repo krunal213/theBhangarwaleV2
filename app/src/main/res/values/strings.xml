@@ -86,5 +86,16 @@
     <string name="error_enter_valid_phone_number">Enter valid phone number.</string>
     <string name="string_tap_and_hold_info">Tap and hold on a item for more options</string>
     <string name="tag_image_uri">tag_image_uri</string>
+    <string name="title_delete">Delete</string>
+    <string name="tag_item">tag_item</string>
+    <string name="tag_position">tag_position</string>
+    <string name="error_enter_valid_otp">Enter valid otp.</string>
+    <string name="title_edit">Edit directly</string>
+    <string name="title_google_map">Edit with Google Maps</string>
+    <string name="title_edit_address">Edit Address</string>
+    <string name="tag_address">tag_address</string>
+    <string name="string_recent_search">Recent Search</string>
+    <string name="title_profile_photo">Profile Photo</string>
+    <string name="title_close">Close</string>
 
 </resources>

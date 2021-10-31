@@ -13,7 +13,7 @@ import com.app.thebhangarwale.custom.entity.BhangarwaleResult.Error
 import com.app.thebhangarwale.dagger.component.DaggerBhangarwaleAppComponent
 import com.app.thebhangarwale.dagger.module.BhangarwaleApplicationModule
 import com.app.thebhangarwale.databinding.ActivityPhoneNumberBinding
-import com.app.thebhangarwale.login.viewmodel.LoginViewModel
+import com.app.thebhangarwale.LoginViewModel
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.credentials.Credential
 import com.google.android.gms.auth.api.credentials.CredentialPickerConfig

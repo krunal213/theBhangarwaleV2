@@ -1,10 +1,8 @@
-package com.app.thebhangarwale.login.viewmodel
+package com.app.thebhangarwale
 
 import android.app.Application
 import android.text.TextUtils
 import androidx.lifecycle.*
-import com.app.thebhangarwale.R
-import com.app.thebhangarwale.TheBhangarwaleApplication
 import com.app.thebhangarwale.custom.entity.BhangarwaleResult
 import com.app.thebhangarwale.custom.entity.BhangarwaleResult.Error
 import com.app.thebhangarwale.custom.entity.BhangarwaleResult.Success
@@ -36,14 +34,47 @@ class LoginViewModel @Inject constructor(application: Application) : AndroidView
                         .getString(R.string.error_enter_valid_phone_number)
                 )
             }
-            emit(Success(Any()))
+            emit(Success(null))
         }catch (ex : Exception){
             emit(Error(ex))
         }
     }
 
-    fun validatedOTP(trim: String?) {
+    fun validatedOTP(otp : String) : LiveData<BhangarwaleResult<*>> = liveData {
+        try {
+            if(TextUtils.isEmpty(otp.trim())){
+                throw Exception(
+                    getApplication<TheBhangarwaleApplication>()
+                        .resources
+                        .getString(R.string.error_enter_valid_otp)
+                )
+            }
+            if(!TextUtils.isDigitsOnly(otp.trim())){
+                throw Exception(
+                    getApplication<TheBhangarwaleApplication>()
+                        .resources
+                        .getString(R.string.error_enter_valid_otp)
+                )
+            }
+            if(!otp.matches(Regex("\\d{6}"))){
+                throw Exception(
+                    getApplication<TheBhangarwaleApplication>()
+                        .resources
+                        .getString(R.string.error_enter_valid_otp)
+                )
+            }
+            emit(Success(null))
+        }catch (ex : Exception){
+            emit(Error(ex))
+        }
+    }
 
+    fun isUserLoggedIn() : LiveData<BhangarwaleResult<*>> = liveData {
+        try {
+            emit(Success(null))
+        }catch (ex : Exception){
+            emit(Error(ex))
+        }
     }
 
 

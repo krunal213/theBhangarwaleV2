@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/root">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
@@ -23,11 +25,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:titleTextAppearance="@style/Toolbar.TitleTextV2" />
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarWithContextMenu"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/color_search_edit_text"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextAppearance="@style/Toolbar.TitleTextV4"
+        app:navigationIcon="@drawable/ic_back"
+        android:visibility="gone"/>
+
     <com.app.thebhangarwale.custom.view.BhangarwaleSmoothRefreshLayout
         android:id="@+id/mRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:sr_content="@+id/recyclerviewAddress">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -38,4 +51,4 @@
 
     </com.app.thebhangarwale.custom.view.BhangarwaleSmoothRefreshLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

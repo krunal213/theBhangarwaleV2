@@ -36,9 +36,4 @@
         <item name="colorPrimary">#FFFFFF</item>
     </style>
 
-    <style name="OtpViewTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
-        <item name="android:itemBackground">#E0E0E0</item>
-    </style>
-
 </resources>

@@ -4,8 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-feature android:name="android.hardware.camera"
-        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -64,7 +62,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustNothing" />
         <activity
-            android:name=".AddressActivity"
+            android:name=".address.view.AddressActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustNothing" />
         <activity
@@ -72,7 +70,11 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustNothing" />
         <activity
-            android:name=".AddAddressActivity"
+            android:name=".address.view.CreateAddressWithGoogleMapActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.TheBhangarwale.GoogleMap"/>
+        <activity
+            android:name=".address.view.EditWithGoogleMapAddressActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.TheBhangarwale.GoogleMap"/>
         <meta-data
@@ -124,6 +126,10 @@
             android:windowSoftInputMode="adjustNothing"/>
         <activity
             android:name=".CreateAddressActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing"/>
+        <activity
+            android:name=".address.view.EditAddressActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustNothing"/>
         <activity

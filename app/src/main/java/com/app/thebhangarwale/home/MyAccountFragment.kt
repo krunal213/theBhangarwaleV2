@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -16,6 +17,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.app.thebhangarwale.*
+import com.bumptech.glide.Glide
 import com.google.android.material.card.MaterialCardView
 
 class MyAccountFragment : Fragment(), View.OnClickListener {
@@ -29,6 +31,12 @@ class MyAccountFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        view?.findViewById<ImageView>(R.id.img).apply {
+            Glide.with(context)
+                .load(R.drawable.ic_ashish)
+                .circleCrop()
+                .into(this)
+        }
         view?.findViewById<RecyclerView>(R.id.rv).apply {
             layoutManager = LinearLayoutManager(requireContext(),
                 LinearLayoutManager.VERTICAL,false)
