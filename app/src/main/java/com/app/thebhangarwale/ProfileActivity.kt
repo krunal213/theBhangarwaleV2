@@ -92,6 +92,7 @@ class ProfileActivity : BhangarwaleConfigAndControllerActivity(), View.OnClickLi
 
         findViewById<FloatingActionButton>(R.id.fab).apply {
             setOnClickListener(this@ProfileActivity)
+            addOnLayoutChangeListener { v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom -> circularRevalV2() }
         }
 
     }

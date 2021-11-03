@@ -38,11 +38,19 @@
         android:background="@color/color_bhangarwale"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+        <include
+            android:id="@+id/shimmer_what_is_new"
+            layout="@layout/layout_shimmer_what_is_new"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/color_bhangarwale"/>
+            android:background="@color/color_bhangarwale"
+            android:visibility="gone"/>
 
     </com.app.thebhangarwale.custom.view.BhangarwaleSmoothRefreshLayout>
 

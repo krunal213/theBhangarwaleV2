@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/address"
-        android:name="com.app.thebhangarwale.AddressPickerFragment"
+        android:name="com.app.thebhangarwale.EditAddressPickerFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

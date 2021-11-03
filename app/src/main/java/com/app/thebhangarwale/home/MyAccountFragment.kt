@@ -19,6 +19,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.app.thebhangarwale.*
 import com.bumptech.glide.Glide
 import com.google.android.material.card.MaterialCardView
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.view.ViewCompat
+
 
 class MyAccountFragment : Fragment(), View.OnClickListener {
 
@@ -69,8 +72,16 @@ class MyAccountFragment : Fragment(), View.OnClickListener {
                 }
             }
             R.id.item_profile->{
-                startActivity(Intent(requireActivity(), ProfileActivity::class.java))
+                val options = ViewCompat.getTransitionName(requireActivity().findViewById<ImageView>(R.id.img))?.let {
+                    ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        requireActivity(),
+                        requireActivity().findViewById<ImageView>(R.id.img),
+                        it
+                    )
+                }
+                startActivity(Intent(requireActivity(), ProfileActivity::class.java),options?.toBundle())
             }
+
         }
     }
 

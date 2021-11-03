@@ -6,16 +6,29 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+   <!-- <com.mikhaellopez.circularprogressbar.CircularProgressBar
         android:id="@+id/sr_classic_progress"
         android:layout_width="32dp"
         android:layout_height="32dp"
         app:cpb_background_progressbar_color="#EEEEEE"
-        app:cpb_background_progressbar_width="1.2dp"
+        app:cpb_background_progressbar_width="1.4dp"
         app:cpb_progressbar_color="#D6D6D6"
-        app:cpb_progressbar_width="1.2dp"
+        app:cpb_progressbar_width="1.4dp"
         app:cpb_round_border="false"
         app:cpb_indeterminate_mode="true"
-        android:layout_gravity="center"/>
+        app:cpb_progressbar_color_end="#BDBDBD"
+        app:cpb_progressbar_color_start="@android:color/transparent"
+        android:layout_gravity="center"/>-->
+
+    <ProgressBar
+        android:id="@+id/sr_classic_progress"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        style="?android:attr/progressBarStyle"
+        android:indeterminateDrawable="@drawable/drawable_progress_bar"
+        android:indeterminate="true"
+        android:layout_gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
 
 </LinearLayout>

@@ -97,5 +97,6 @@
     <string name="string_recent_search">Recent Search</string>
     <string name="title_profile_photo">Profile Photo</string>
     <string name="title_close">Close</string>
+    <string name="number_regex">0123456789</string>
 
 </resources>

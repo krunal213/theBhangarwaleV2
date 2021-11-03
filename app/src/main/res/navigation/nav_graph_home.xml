@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/navigation_what_is_new"
-        android:name="com.app.thebhangarwale.home.WhatIsNewFragment"
+        android:name="com.app.thebhangarwale.home.whatsnew.WhatIsNewFragment"
         tools:layout="@layout/fragment_what_is_new" />
 
     <fragment

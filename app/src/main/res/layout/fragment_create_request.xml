@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/root">
+    android:id="@+id/root"
+    android:animateLayoutChanges="true">
 
     <include
         android:id="@+id/search"
@@ -14,6 +15,14 @@
         android:layout_height="56dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/shimmer_create_request"
+        layout="@layout/layout_shimmer_create_request"
+        app:layout_constraintTop_toBottomOf="@id/search"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
@@ -29,9 +38,10 @@
         android:id="@+id/mRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/layoutProceed"
+        app:layout_constraintBottom_toTopOf="@id/proceed_layout"
         app:layout_constraintTop_toBottomOf="@id/search"
-        app:sr_content="@+id/recyclerView">
+        app:sr_content="@+id/recyclerView"
+        android:visibility="gone">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -44,12 +54,13 @@
     </com.app.thebhangarwale.custom.view.BhangarwaleSmoothRefreshLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layoutProceed"
+        android:id="@+id/proceed_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/color_checkout_layout"
         android:padding="12dp"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/textViewTotal"
@@ -94,7 +105,8 @@
         android:layout_margin="16dp"
         android:clickable="true"
         android:src="@drawable/ic_add_request"
-        app:layout_constraintBottom_toTopOf="@id/layoutProceed"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintBottom_toTopOf="@id/proceed_layout"
+        app:layout_constraintRight_toRightOf="parent"
+        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

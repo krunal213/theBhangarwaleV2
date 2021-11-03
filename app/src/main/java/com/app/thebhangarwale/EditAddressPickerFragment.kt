@@ -20,7 +20,7 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 import javax.inject.Inject
 
-class AddressPickerFragment : Fragment(), Toolbar.OnMenuItemClickListener, View.OnClickListener {
+class EditAddressPickerFragment : Fragment(), View.OnClickListener {
 
     private val progressBarDialog by lazy {
         activity?.let { ProgressBarDialog(it).show() }
@@ -46,36 +46,25 @@ class AddressPickerFragment : Fragment(), Toolbar.OnMenuItemClickListener, View.
                 )
             })
             .build()
-            .injectAddressPickerFragment(this)
+            .injectEditAddressPickerFragment(this)
         super.onViewCreated(view, savedInstanceState)
         val toolbar : MaterialToolbar = view.findViewById<MaterialToolbar>(R.id.toolbar)
-        toolbar.inflateMenu(R.menu.menu_create_address)
-        toolbar.setOnMenuItemClickListener(this)
         view.findViewById<MaterialButton>(R.id.button_submit).apply {
-            setOnClickListener(this@AddressPickerFragment)
+            setOnClickListener(this@EditAddressPickerFragment)
         }
-    }
-
-    override fun onMenuItemClick(item: MenuItem?): Boolean {
-        when(item?.itemId){
-            R.id.action_create_address->{
-                startActivity(Intent(activity, CreateAddressActivity::class.java))
-            }
-        }
-        return true
     }
 
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.button_submit->{
-                addressViewModel.submitAddress().observe(viewLifecycleOwner,Observer{
+                addressViewModel.submitAddress().observe(viewLifecycleOwner, Observer{
                     when(it){
                         is BhangarwaleResult.Loading->{
                             progressBarDialog?.show()
                         }
                         is BhangarwaleResult.Success->{
                             Toast
-                                .makeText(activity,it.data,Toast.LENGTH_LONG)
+                                .makeText(activity,it.data, Toast.LENGTH_LONG)
                                 .show()
                             activity?.finish()
                         }

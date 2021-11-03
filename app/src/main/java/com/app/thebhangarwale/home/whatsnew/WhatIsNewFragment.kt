@@ -1,4 +1,4 @@
-package com.app.thebhangarwale.home
+package com.app.thebhangarwale.home.whatsnew
 
 import android.content.Intent
 import android.graphics.Rect
@@ -11,14 +11,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.app.thebhangarwale.R
 import com.app.thebhangarwale.RequestDetailActivity
 import android.view.ViewAnimationUtils
+import androidx.lifecycle.Observer
 import com.app.thebhangarwale.circularReval
+import com.app.thebhangarwale.custom.entity.BhangarwaleResult
+import com.app.thebhangarwale.dagger.component.DaggerBhangarwaleAppComponent
+import com.app.thebhangarwale.dagger.module.BhangarwaleApplicationModule
+import com.app.thebhangarwale.home.feed.viewmodel.FeedViewModel
+import com.app.thebhangarwale.home.whatsnew.viewmodel.WhatIsNewViewModel
+import com.facebook.shimmer.ShimmerFrameLayout
+import javax.inject.Inject
 
 class WhatIsNewFragment : Fragment(), View.OnClickListener {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-    }
+    @Inject
+    lateinit var whatsIsNewViewModel: WhatIsNewViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,18 +36,50 @@ class WhatIsNewFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        DaggerBhangarwaleAppComponent
+            .builder()
+            .bhangarwaleApplicationModule(activity?.application?.let {
+                BhangarwaleApplicationModule(
+                    it
+                )
+            })
+            .build()
+            .injectWhatsNewFragment(this)
         super.onViewCreated(view, savedInstanceState)
-        val rv : RecyclerView = view?.findViewById<RecyclerView>(R.id.rv)
-        rv?.apply {
-            layoutManager = LinearLayoutManager(requireContext(),
-                LinearLayoutManager.VERTICAL,false)
-            adapter = WhatsNewAdapter(this@WhatIsNewFragment)
-            addItemDecoration(WhatsNewItemDecoration())
-        }
+        whatsIsNewViewModel.getWhatsNew().observe(viewLifecycleOwner,Observer<BhangarwaleResult<*>>{
+            when(it){
+                is BhangarwaleResult.Success->{
+                    val rv : RecyclerView = view?.findViewById<RecyclerView>(R.id.rv)
+                    rv?.apply {
+                        layoutManager = LinearLayoutManager(requireContext(),
+                            LinearLayoutManager.VERTICAL,false)
+                        adapter = WhatsNewAdapter(this@WhatIsNewFragment)
+                        addItemDecoration(WhatsNewItemDecoration())
+                        visibility = View.VISIBLE
+                    }
+                    view?.findViewById<ShimmerFrameLayout>(R.id.shimmer_what_is_new).apply {
+                        visibility = View.GONE
+                        stopShimmer()
+                    }
+                }
+                is BhangarwaleResult.Loading->{
+                    view?.findViewById<ShimmerFrameLayout>(R.id.shimmer_what_is_new).apply {
+                        visibility = View.VISIBLE
+                        startShimmer()
+                    }
+                }
+            }
+        })
+
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onStart() {
+        super.onStart()
+        activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+    }
+
+    override fun onStop() {
+        super.onStop()
         activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
     }
 

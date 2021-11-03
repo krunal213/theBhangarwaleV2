@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.provider.Settings
 import android.view.MenuItem
 import android.view.View
+import android.view.WindowManager
 import android.view.animation.BounceInterpolator
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.constraintlayout.motion.widget.MotionLayout
@@ -17,6 +18,7 @@ import com.app.thebhangarwale.R
 import com.app.thebhangarwale.RequestCode.REQUEST_MY_LOCATION
 import com.app.thebhangarwale.custom.activity.BhangarwaleConfigAndControllerActivity
 import com.app.thebhangarwale.custom.adapter.MotionLayoutTransitionAdapter
+import com.app.thebhangarwale.custom.view.ProgressBarDialog
 import com.app.thebhangarwale.setVisibilityForMotionLayout
 import com.getkeepsafe.taptargetview.TapTarget
 import com.getkeepsafe.taptargetview.TapTargetView
@@ -44,7 +46,9 @@ class CreateAddressWithGoogleMapActivity : BhangarwaleConfigAndControllerActivit
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.decorView.systemUiVisibility =
-            (View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE)
+            (View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR )
 
         setContentView(R.layout.activity_create_address_with_google_map)
 

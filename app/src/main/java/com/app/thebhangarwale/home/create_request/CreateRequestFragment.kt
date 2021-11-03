@@ -126,10 +126,34 @@ class CreateRequestFragment : Fragment(), View.OnClickListener, Toolbar.OnMenuIt
         }
         requestViewModel?.getRequests()?.observe(viewLifecycleOwner, {
             when (it) {
+                is BhangarwaleResult.Loading->{
+                    fragmentCreateRequestBinding?.apply {
+                        shimmerCreateRequest
+                            .shimmerCreateRequestLayout
+                            .startShimmer()
+                    }
+                }
                 is BhangarwaleResult.Success -> {
                     val requestAdapter =
                         fragmentCreateRequestBinding?.recyclerView?.adapter as RequestAdapter
                     requestAdapter.notifyDataSetChanged(it.data)
+                    fragmentCreateRequestBinding?.apply {
+                        shimmerCreateRequest
+                            .shimmerCreateRequestLayout
+                            .apply {
+                                visibility = View.GONE
+                                stopShimmer()
+                            }
+                        mRefreshLayout.apply {
+                            visibility = View.VISIBLE
+                        }
+                        proceedLayout.apply {
+                            visibility = View.VISIBLE
+                        }
+                        floatingActionButton.apply {
+                            visibility = View.VISIBLE
+                        }
+                    }
                 }
             }
         })

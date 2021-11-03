@@ -52,6 +52,9 @@ class ConfirmationActivity : BhangarwaleConfigAndControllerActivity() {
                 }
             })
         }
+        
+
+
 
     }
 
@@ -67,7 +70,7 @@ class ItemAdapter : RecyclerView.Adapter<ItemViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return 5;
+        return 2;
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {

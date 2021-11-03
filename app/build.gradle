@@ -112,6 +112,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview-selection:1.1.0'
 
     implementation 'com.aghajari.zoomhelper:ZoomHelper:1.0.1'
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
 }
 

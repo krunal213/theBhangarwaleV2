@@ -8,6 +8,7 @@ import com.app.thebhangarwale.address.entity.AddressV2
 import com.app.thebhangarwale.custom.entity.BhangarwaleResult
 import com.app.thebhangarwale.custom.entity.BhangarwaleResult.Error
 import com.app.thebhangarwale.custom.entity.BhangarwaleResult.Success
+import kotlinx.coroutines.delay
 import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
@@ -59,6 +60,26 @@ class AddressViewModel @Inject constructor(application: Application) : AndroidVi
 
         }catch (ex : Exception){
             emit(Error(ex))
+        }
+    }
+
+    fun submitAddress()  = liveData<BhangarwaleResult<String>> {
+        try {
+            emit(BhangarwaleResult.Loading)
+            delay(5000)
+            emit(Success("Address added successfully."))
+        }catch (ex : Exception){
+
+        }
+    }
+
+    fun updateAddress()  = liveData<BhangarwaleResult<String>> {
+        try {
+            emit(BhangarwaleResult.Loading)
+            delay(5000)
+            emit(Success("Address updated successfully."))
+        }catch (ex : Exception){
+
         }
     }
 

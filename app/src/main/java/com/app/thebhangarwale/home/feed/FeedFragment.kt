@@ -12,10 +12,6 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.Toolbar
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.OnLifecycleEvent
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -29,13 +25,16 @@ import com.hrskrs.instadotlib.InstaDotView
 import androidx.core.view.ViewCompat
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
+import androidx.lifecycle.*
 import com.app.thebhangarwale.*
 import com.app.thebhangarwale.custom.adapter.BhangarwaleOnAttachStateChangeAdapter
+import com.app.thebhangarwale.custom.entity.BhangarwaleResult
 import com.app.thebhangarwale.custom.view.BhangarwaleSmoothRefreshLayout
 import com.app.thebhangarwale.custom.view.BhangarwaleSmoothRefreshLayoutHeader
 import com.app.thebhangarwale.dagger.component.DaggerBhangarwaleAppComponent
 import com.app.thebhangarwale.dagger.module.BhangarwaleApplicationModule
 import com.app.thebhangarwale.home.feed.viewmodel.FeedViewModel
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.CornerFamily
@@ -78,6 +77,24 @@ class FeedFragment : Fragment(), View.OnClickListener, Toolbar.OnMenuItemClickLi
         }
         val header = BhangarwaleSmoothRefreshLayoutHeader<IIndicator>(this.requireActivity())
         view.findViewById<BhangarwaleSmoothRefreshLayout>(R.id.mRefreshLayout).setHeaderView(header)
+        feedViewModel.getFeeds().observe(viewLifecycleOwner,Observer<BhangarwaleResult<*>>{
+            when(it){
+                is BhangarwaleResult.Success->{
+                    view.apply {
+                        findViewById<ShimmerFrameLayout>(R.id.shimmer_feed).apply {
+                            stopShimmer()
+                            visibility = View.GONE
+                        }
+                        findViewById<BhangarwaleSmoothRefreshLayout>(R.id.mRefreshLayout).apply {
+                            visibility = View.VISIBLE
+                        }
+                    }
+                }
+                is BhangarwaleResult.Loading->{
+                    view.findViewById<ShimmerFrameLayout>(R.id.shimmer_feed).startShimmer()
+                }
+            }
+        })
     }
 
     override fun onClick(v: View?) {

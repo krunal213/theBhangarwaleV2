@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import android.view.Menu
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.view.ViewCompat
@@ -20,8 +21,13 @@ import com.app.thebhangarwale.add_item.viewmodel.MultimediaViewModel
 import com.app.thebhangarwale.custom.activity.BhangarwaleConfigAndControllerActivity
 import com.app.thebhangarwale.custom.activity_result.BhangarwaleTakePicture
 import com.app.thebhangarwale.custom.activity_result.BhangarwaleTakeVideo
+import com.app.thebhangarwale.custom.entity.BhangarwaleResult
+import com.app.thebhangarwale.custom.view.ProgressBarDialog
+import com.app.thebhangarwale.home.create_request.viewmodel.RequestViewModel
 import com.bumptech.glide.Glide
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class AddItemActivity : BhangarwaleConfigAndControllerActivity(), View.OnClickListener {
 
@@ -29,16 +35,25 @@ class AddItemActivity : BhangarwaleConfigAndControllerActivity(), View.OnClickLi
         MultimediaViewModel(application)
     }
 
-    private val imageLauncher = registerForActivityResult(BhangarwaleTakePicture()) { imageResponse ->
-        when (imageResponse.result) {
-            RESULT_OK -> {
-                findViewById<RecyclerView>(R.id.recyclerviewImages).apply {
-                    val addItemAdapter: AddItemAdapter? = adapter as AddItemAdapter?
-                    addItemAdapter?.notifyDataSetChanged(Media.Image<Uri>(data = imageResponse.uri as Uri))
+    private val requestViewModel by lazy {
+         RequestViewModel(application)
+    }
+
+    private val progressBarDialog by lazy {
+        ProgressBarDialog(this).show()
+    }
+
+    private val imageLauncher =
+        registerForActivityResult(BhangarwaleTakePicture()) { imageResponse ->
+            when (imageResponse.result) {
+                RESULT_OK -> {
+                    findViewById<RecyclerView>(R.id.recyclerviewImages).apply {
+                        val addItemAdapter: AddItemAdapter? = adapter as AddItemAdapter?
+                        addItemAdapter?.notifyDataSetChanged(Media.Image<Uri>(data = imageResponse.uri as Uri))
+                    }
                 }
             }
         }
-    }
 
     private val videoLauncher = registerForActivityResult(BhangarwaleTakeVideo()) { videoResponse ->
         when (videoResponse.result) {
@@ -66,6 +81,11 @@ class AddItemActivity : BhangarwaleConfigAndControllerActivity(), View.OnClickLi
             addItemDecoration(AddItemDecoration())
             adapter = AddItemAdapter(this@AddItemActivity)
         }
+
+        findViewById<MaterialButton>(R.id.button_submit)
+            .setOnClickListener(this)
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -100,7 +120,7 @@ class AddItemActivity : BhangarwaleConfigAndControllerActivity(), View.OnClickLi
 
     fun selectPhotoFromGallery() {
         val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
-            type = MIME_TYPE_FOR_IMAGE+";"+ MIME_TYPE_FOR_VIDEO
+            type = MIME_TYPE_FOR_IMAGE + ";" + MIME_TYPE_FOR_VIDEO
             addCategory(Intent.CATEGORY_OPENABLE)
         }
         if (intent.resolveActivity(packageManager) != null) {
@@ -112,7 +132,7 @@ class AddItemActivity : BhangarwaleConfigAndControllerActivity(), View.OnClickLi
         imageLauncher.launch(multimediaViewModel.photoUri)
     }
 
-    fun selectVideoFromCamera(){
+    fun selectVideoFromCamera() {
         videoLauncher.launch(multimediaViewModel.videoUri)
     }
 
@@ -135,10 +155,10 @@ class AddItemActivity : BhangarwaleConfigAndControllerActivity(), View.OnClickLi
     }
 
     override fun onClick(v: View?) {
-        when(v?.id){
-            R.id.imageViewForItems->{
-                when(v.getTag(R.string.tag_image_uri)){
-                    is Media.Image<Uri>->{
+        when (v?.id) {
+            R.id.imageViewForItems -> {
+                when (v.getTag(R.string.tag_image_uri)) {
+                    is Media.Image<Uri> -> {
                         val intent: Intent = Intent(this, ImageDetailScreenActivity::class.java)
                         val imageObject = v.getTag(R.string.tag_image_uri) as Media.Image<Uri>;
                         intent.data = imageObject.data
@@ -151,7 +171,7 @@ class AddItemActivity : BhangarwaleConfigAndControllerActivity(), View.OnClickLi
                         }
                         startActivity(intent, options?.toBundle())
                     }
-                    is Media.Video<Uri>->{
+                    is Media.Video<Uri> -> {
                         val intent: Intent = Intent(this, VideoDetailScreenActivity::class.java)
                         val imageObject = v.getTag(R.string.tag_image_uri) as Media.Video<Uri>;
                         intent.data = imageObject.data
@@ -165,6 +185,21 @@ class AddItemActivity : BhangarwaleConfigAndControllerActivity(), View.OnClickLi
                         startActivity(intent, options?.toBundle())
                     }
                 }
+            }
+            R.id.button_submit->{
+                requestViewModel.addItem().observe(this,Observer{
+                    when(it){
+                        is BhangarwaleResult.Loading->{
+                            progressBarDialog.show()
+                        }
+                        is BhangarwaleResult.Success->{
+                            progressBarDialog.dismiss()
+                            Toast
+                                .makeText(this,it.data,Toast.LENGTH_LONG)
+                                .show()
+                        }
+                    }
+                })
             }
         }
     }
@@ -185,13 +220,15 @@ class AddItemDecoration : RecyclerView.ItemDecoration() {
         val position = parent.getChildAdapterPosition(view) // item position
         val column = position % spanCount // item column
         outRect.left = column * spacing / spanCount // column * ((1f / spanCount) * spacing)
-        outRect.right = spacing - (column + 1) * spacing / spanCount // spacing - (column + 1) * ((1f /    spanCount) * spacing)
+        outRect.right =
+            spacing - (column + 1) * spacing / spanCount // spacing - (column + 1) * ((1f /    spanCount) * spacing)
     }
 }
 
 class AddItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-class AddItemAdapter(val onClickListener: View.OnClickListener?) : RecyclerView.Adapter<AddItemViewHolder>() {
+class AddItemAdapter(val onClickListener: View.OnClickListener?) :
+    RecyclerView.Adapter<AddItemViewHolder>() {
 
     val imageList: ArrayList<Media<Uri>> = ArrayList()
 
@@ -211,27 +248,27 @@ class AddItemAdapter(val onClickListener: View.OnClickListener?) : RecyclerView.
     }
 
     override fun onBindViewHolder(holder: AddItemViewHolder, position: Int) {
-        val content : Media<Uri>? = imageList.get(position)
-        when(content){
-            is Media.Video->{
+        val content: Media<Uri>? = imageList.get(position)
+        when (content) {
+            is Media.Video -> {
                 holder.itemView.findViewById<AppCompatImageView>(R.id.imageViewForItems).apply {
                     Glide.with(getContext())
                         .load(content.data)
                         .thumbnail(Glide.with(this.context).load(content.data))
                         .into(this)
                     setTag(R.string.tag_image_uri, content)
-                    ViewCompat.setTransitionName(holder.itemView,"imageViewForItems")
+                    ViewCompat.setTransitionName(holder.itemView, "imageViewForItems")
                     setOnClickListener(onClickListener)
                 }
             }
-            is Media.Image->{
+            is Media.Image -> {
                 holder.itemView.findViewById<AppCompatImageView>(R.id.imageViewForItems).apply {
                     Glide.with(getContext())
                         .load(content.data)
                         .thumbnail(Glide.with(this.context).load(content.data))
                         .into(this)
                     setTag(R.string.tag_image_uri, content)
-                    ViewCompat.setTransitionName(holder.itemView,"videoViewForItems")
+                    ViewCompat.setTransitionName(holder.itemView, "videoViewForItems")
                     setOnClickListener(onClickListener)
                 }
             }
@@ -239,7 +276,7 @@ class AddItemAdapter(val onClickListener: View.OnClickListener?) : RecyclerView.
 
     }
 
-    fun notifyDataSetChanged(content : Media<Uri>) {
+    fun notifyDataSetChanged(content: Media<Uri>) {
         if (imageList.size <= 3) {
             imageList.add(content)
             notifyDataSetChanged()
