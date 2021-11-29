@@ -62,7 +62,6 @@
             android:layout_height="wrap_content"
             android:enabled="false"
             android:inputType="phone"
-            android:text="@string/string_country_code_india"
             android:textSize="20sp"
             android:textColor="@color/color_bhangarwale"/>
 

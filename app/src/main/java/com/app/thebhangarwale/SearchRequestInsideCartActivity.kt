@@ -11,12 +11,13 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.akexorcist.localizationactivity.ui.LocalizationActivity
 import com.app.thebhangarwale.custom.activity.BhangarwaleConfigAndControllerActivity
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.transition.platform.MaterialContainerTransform
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
 
-class SearchRequestInsideCartActivity : BhangarwaleConfigAndControllerActivity() {
+class SearchRequestInsideCartActivity : LocalizationActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         window.requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)

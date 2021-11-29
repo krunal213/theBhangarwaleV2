@@ -18,6 +18,7 @@ import androidx.recyclerview.selection.StorageStrategy
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.TransitionManager
+import com.akexorcist.localizationactivity.ui.LocalizationActivity
 import com.app.thebhangarwale.address.entity.AddressV2
 import com.app.thebhangarwale.address.view.*
 import com.app.thebhangarwale.address.viewmodel.AddressViewModel
@@ -34,7 +35,7 @@ import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
-class ChooseAddressActivity : BhangarwaleConfigAndControllerActivity(), View.OnClickListener,
+class ChooseAddressActivity : LocalizationActivity(), View.OnClickListener,
     Toolbar.OnMenuItemClickListener {
 
     @Inject

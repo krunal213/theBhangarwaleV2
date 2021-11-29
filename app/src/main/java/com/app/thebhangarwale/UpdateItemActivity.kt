@@ -7,6 +7,7 @@ import android.view.View
 import android.view.Window
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import com.akexorcist.localizationactivity.ui.LocalizationActivity
 import com.app.thebhangarwale.custom.activity.BhangarwaleConfigAndControllerActivity
 import com.app.thebhangarwale.custom.entity.BhangarwaleResult
 import com.app.thebhangarwale.custom.view.ProgressBarDialog
@@ -17,7 +18,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.transition.platform.MaterialContainerTransform
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
 
-class UpdateItemActivity : BhangarwaleConfigAndControllerActivity(), View.OnClickListener {
+class UpdateItemActivity : LocalizationActivity(), View.OnClickListener {
 
     private val progressBarDialog by lazy {
         ProgressBarDialog(this).show()

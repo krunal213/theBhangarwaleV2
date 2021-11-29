@@ -19,6 +19,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.akexorcist.localizationactivity.ui.LocalizationActivity
 import com.app.thebhangarwale.add_item.entity.Media
 import com.app.thebhangarwale.add_item.view.AddItemAdapter
 import com.app.thebhangarwale.add_item.viewmodel.MultimediaViewModel
@@ -29,7 +30,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 
-class ProfileActivity : BhangarwaleConfigAndControllerActivity(), View.OnClickListener {
+class ProfileActivity : LocalizationActivity(), View.OnClickListener {
 
     private val multimediaViewModel by lazy {
         MultimediaViewModel(application)

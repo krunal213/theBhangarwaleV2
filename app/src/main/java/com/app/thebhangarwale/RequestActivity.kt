@@ -8,10 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.akexorcist.localizationactivity.ui.LocalizationActivity
 import com.app.thebhangarwale.custom.activity.BhangarwaleConfigAndControllerActivity
 import com.google.android.material.appbar.MaterialToolbar
 
-class RequestActivity : BhangarwaleConfigAndControllerActivity(), View.OnClickListener {
+class RequestActivity : LocalizationActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

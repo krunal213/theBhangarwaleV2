@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.app.thebhangarwale">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -12,7 +13,8 @@
         android:roundIcon="@drawable/ic_truck"
         android:supportsRtl="true"
         android:theme="@style/Theme.TheBhangarwale"
-        android:name=".TheBhangarwaleApplication">
+        android:name=".TheBhangarwaleApplication"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
@@ -141,6 +143,13 @@
             android:name=".VideoDetailScreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/FullscreenTheme"/>
+        <receiver
+            android:name=".sms.BhangarwaleBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.auth.api.phone.SMS_RETRIEVED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

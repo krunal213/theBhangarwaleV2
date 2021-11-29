@@ -21,6 +21,8 @@ import android.widget.EditText
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.content.ContextCompat.getSystemService
+import com.app.thebhangarwale.custom.network.BhangarwaleNetworkConnectionInterceptor
+import okhttp3.OkHttpClient
 
 fun View.circularReval() {
     addOnLayoutChangeListener(object : View.OnLayoutChangeListener {
@@ -128,4 +130,9 @@ fun EditText.openKeyBoardWithFocus(){
     with(context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?){
         this?.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
     }
+}
+
+fun OkHttpClient.Builder.buildInternetInterceptor(context: Context) : OkHttpClient{
+    return addInterceptor(BhangarwaleNetworkConnectionInterceptor(context))
+        .build()
 }

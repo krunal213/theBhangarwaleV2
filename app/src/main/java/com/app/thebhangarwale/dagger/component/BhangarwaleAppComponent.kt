@@ -8,14 +8,15 @@ import com.app.thebhangarwale.address.view.AddressActivity
 import com.app.thebhangarwale.address.view.CreateAddressActivity
 import com.app.thebhangarwale.custom.activity.BhangarwaleConfigAndControllerActivity
 import com.app.thebhangarwale.dagger.module.BhangarwaleApplicationModule
+import com.app.thebhangarwale.dagger.module.BhangarwaleRepositoryModule
 import com.app.thebhangarwale.dagger.module.BhangarwaleViewModelModule
-import com.app.thebhangarwale.home.feed.FeedFragment
+import com.app.thebhangarwale.home.feed.view.FeedFragment
 import com.app.thebhangarwale.home.whatsnew.WhatIsNewFragment
 import com.app.thebhangarwale.login.view.OtpActivity
 import com.app.thebhangarwale.login.view.PhoneNumberActivity
 import dagger.Component
 
-@Component(modules = [BhangarwaleApplicationModule::class,BhangarwaleViewModelModule::class])
+@Component(modules = [BhangarwaleApplicationModule::class,BhangarwaleViewModelModule::class,BhangarwaleRepositoryModule::class])
 interface BhangarwaleAppComponent {
 
     fun injectPhoneNumberActivity(phoneNumberActivity: PhoneNumberActivity)

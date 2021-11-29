@@ -9,6 +9,7 @@ import com.app.thebhangarwale.custom.entity.BhangarwaleResult
 import com.app.thebhangarwale.dagger.component.DaggerBhangarwaleAppComponent
 import com.app.thebhangarwale.dagger.module.BhangarwaleApplicationModule
 import com.app.thebhangarwale.login.view.PhoneNumberActivity
+import com.app.thebhangarwale.login.viewmodel.LoginViewModel
 import javax.inject.Inject
 
 class SplashActivity : AppCompatActivity() {

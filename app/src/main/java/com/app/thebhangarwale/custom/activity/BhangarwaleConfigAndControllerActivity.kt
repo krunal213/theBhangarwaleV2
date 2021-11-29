@@ -2,12 +2,9 @@ package com.app.thebhangarwale.custom.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import androidx.lifecycle.Observer
 import com.akexorcist.localizationactivity.ui.LocalizationActivity
-import com.app.thebhangarwale.HomeActivity
-import com.app.thebhangarwale.Login
-import com.app.thebhangarwale.LoginViewModel
+import com.app.thebhangarwale.login.viewmodel.LoginViewModel
 import com.app.thebhangarwale.custom.entity.BhangarwaleResult
 import com.app.thebhangarwale.dagger.component.DaggerBhangarwaleAppComponent
 import com.app.thebhangarwale.dagger.module.BhangarwaleApplicationModule

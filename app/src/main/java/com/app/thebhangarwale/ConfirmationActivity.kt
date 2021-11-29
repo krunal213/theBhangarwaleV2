@@ -11,11 +11,12 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.akexorcist.localizationactivity.ui.LocalizationActivity
 import com.app.thebhangarwale.custom.activity.BhangarwaleConfigAndControllerActivity
 import java.util.*
 import kotlin.collections.ArrayList
 
-class ConfirmationActivity : BhangarwaleConfigAndControllerActivity() {
+class ConfirmationActivity : LocalizationActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

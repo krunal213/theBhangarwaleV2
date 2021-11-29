@@ -8,29 +8,34 @@ import android.view.View
 import androidx.core.widget.addTextChangedListener
 import com.akexorcist.localizationactivity.ui.LocalizationActivity
 import com.app.thebhangarwale.*
+import com.app.thebhangarwale.custom.entity.BhangarwaleResult.Loading
 import com.app.thebhangarwale.custom.entity.BhangarwaleResult.Success
 import com.app.thebhangarwale.custom.entity.BhangarwaleResult.Error
+import com.app.thebhangarwale.custom.view.ProgressBarDialogFragment
 import com.app.thebhangarwale.dagger.component.DaggerBhangarwaleAppComponent
 import com.app.thebhangarwale.dagger.module.BhangarwaleApplicationModule
 import com.app.thebhangarwale.databinding.ActivityPhoneNumberBinding
-import com.app.thebhangarwale.LoginViewModel
+import com.app.thebhangarwale.login.viewmodel.LoginViewModel
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.credentials.Credential
 import com.google.android.gms.auth.api.credentials.CredentialPickerConfig
 import com.google.android.gms.auth.api.credentials.HintRequest
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
+import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
+import androidx.lifecycle.Observer
 
 class PhoneNumberActivity : LocalizationActivity(),
     GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
-    View.OnClickListener, View.OnFocusChangeListener {
+    View.OnClickListener {
 
     @Inject
     lateinit var loginViewModel: LoginViewModel
     private val activityPhoneNumberBinding: ActivityPhoneNumberBinding by lazy {
         ActivityPhoneNumberBinding.inflate(layoutInflater)
     }
+
     companion object {
         private const val RC_HINT = 1000
     }
@@ -48,13 +53,64 @@ class PhoneNumberActivity : LocalizationActivity(),
             imageviewSupport.setOnClickListener(this@PhoneNumberActivity)
             textInputEditTextPhoneNumber.apply {
                 showSoftInputOnFocus = false
-                onFocusChangeListener = this@PhoneNumberActivity
+                onFocusChangeListener = View.OnFocusChangeListener { p0, p1 ->
+                    try {
+                        with(this@PhoneNumberActivity) {
+                            val mCredentialsApiClient = GoogleApiClient.Builder(this)
+                                .addConnectionCallbacks(this)
+                                .enableAutoManage(this, this)
+                                .addApi(Auth.CREDENTIALS_API)
+                                .build()
+                            val hintRequest = HintRequest.Builder()
+                                .setHintPickerConfig(
+                                    CredentialPickerConfig.Builder()
+                                        .setShowCancelButton(true)
+                                        .build()
+                                )
+                                .setPhoneNumberIdentifierSupported(true)
+                                .build()
+                            startIntentSenderForResult(
+                                Auth.CredentialsApi
+                                    .getHintPickerIntent(
+                                        mCredentialsApiClient,
+                                        hintRequest
+                                    )
+                                    .intentSender,
+                                RC_HINT,
+                                null,
+                                0,
+                                0,
+                                0
+                            )
+                        }
+                    } catch (e: SendIntentException) {
+                    }
+                }
                 addTextChangedListener {
                     textInputLayoutPhoneNumber
                         .isErrorEnabled = false
                 }
             }
         }
+        loginViewModel.getCurrentCountryCode().observe(this, Observer {
+            when (it) {
+                is Success -> {
+                    activityPhoneNumberBinding
+                        .textInputEditTextCountryCode
+                        .setText(it.data)
+                }
+                is Error -> {
+                    it.exception.message?.let { message ->
+                        Snackbar.make(
+                            activityPhoneNumberBinding.root,
+                            message,
+                            Snackbar.LENGTH_LONG
+                        ).setAnchorView(activityPhoneNumberBinding.buttonContinue).show()
+                    }
+                }
+            }
+        })
+
     }
 
     override fun onClick(v: View?) {
@@ -64,9 +120,18 @@ class PhoneNumberActivity : LocalizationActivity(),
                     .textInputEditTextPhoneNumber
                     .apply {
                         loginViewModel
-                            .validatedPhoneNumber(text.toString().trim())
+                            .validatedPhoneNumber(text.toString().trim(), "")
                             .observe(this@PhoneNumberActivity, {
                                 when (it) {
+                                    is Loading -> {
+                                        with(this@PhoneNumberActivity) {
+                                            ProgressBarDialogFragment()
+                                                .show(
+                                                    supportFragmentManager,
+                                                    ProgressBarDialogFragment.TAG
+                                                )
+                                        }
+                                    }
                                     is Success -> {
                                         startActivity(
                                             Intent(
@@ -74,11 +139,36 @@ class PhoneNumberActivity : LocalizationActivity(),
                                                 OtpActivity::class.java
                                             )
                                         )
+                                        with(this@PhoneNumberActivity) {
+                                            supportFragmentManager.executePendingTransactions()
+                                            with(
+                                                supportFragmentManager
+                                                    .findFragmentByTag(ProgressBarDialogFragment.TAG)
+                                                        as ProgressBarDialogFragment
+                                            ) {
+                                                dismiss()
+                                            }
+                                        }
                                     }
                                     is Error -> {
-                                        activityPhoneNumberBinding
-                                            .textInputLayoutPhoneNumber
-                                            .error = it.exception.message
+                                        with(this@PhoneNumberActivity) {
+                                            supportFragmentManager.executePendingTransactions()
+                                            with(
+                                                supportFragmentManager
+                                                    .findFragmentByTag(ProgressBarDialogFragment.TAG)
+                                                        as ProgressBarDialogFragment
+                                            ) {
+                                                dismiss()
+                                            }
+                                        }
+                                        when (it.exception) {
+                                            else -> {
+                                                activityPhoneNumberBinding
+                                                    .textInputLayoutPhoneNumber
+                                                    .error = it.exception.message
+                                            }
+                                        }
+
                                     }
                                 }
                             })
@@ -87,35 +177,6 @@ class PhoneNumberActivity : LocalizationActivity(),
             R.id.imageviewSupport -> {
                 startActivity(Intent(this, SupportActivity::class.java))
             }
-        }
-    }
-
-    override fun onFocusChange(v: View?, hasFocus: Boolean) {
-        try {
-            val mCredentialsApiClient = GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .enableAutoManage(this, this)
-                .addApi(Auth.CREDENTIALS_API)
-                .build()
-            val hintRequest = HintRequest.Builder()
-                .setHintPickerConfig(
-                    CredentialPickerConfig.Builder()
-                        .setShowCancelButton(true)
-                        .build()
-                )
-                .setPhoneNumberIdentifierSupported(true)
-                .build()
-            val intent =
-                Auth.CredentialsApi.getHintPickerIntent(mCredentialsApiClient, hintRequest)
-            startIntentSenderForResult(
-                intent.intentSender,
-                RC_HINT,
-                null,
-                0,
-                0,
-                0
-            )
-        } catch (e: SendIntentException) {
         }
     }
 
@@ -164,4 +225,6 @@ class PhoneNumberActivity : LocalizationActivity(),
             }
         }
     }
+
+
 }

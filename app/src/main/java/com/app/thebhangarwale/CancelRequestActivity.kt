@@ -9,10 +9,11 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
 import android.widget.TextView
+import com.akexorcist.localizationactivity.ui.LocalizationActivity
 import com.app.thebhangarwale.custom.activity.BhangarwaleConfigAndControllerActivity
 import com.google.android.material.appbar.MaterialToolbar
 
-class CancelRequestActivity : BhangarwaleConfigAndControllerActivity() {
+class CancelRequestActivity : LocalizationActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
